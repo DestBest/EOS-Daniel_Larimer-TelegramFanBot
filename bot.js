@@ -7,10 +7,10 @@ watch = () => {
     // When bot receive any message
     bot.on('text', function(msg) {  
     
-        // If message is sent by Daniel Larimer
+        // If message is sent by Daniel-Larimer
         if (msg.from.id == DANIEL-LARIMER_TELEGRAM_ID) {  
         
-            // Send a copy of the message to 
+            // Send a copy of the message to EOS-Dan-Msg-Only_CHANNEL
             return bot.sendMessage(EOS-Dan-Msg-Only_CHANNEL_TELEGRAM_ID, msg.text) 
             
         }
