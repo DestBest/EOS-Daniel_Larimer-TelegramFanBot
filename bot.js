@@ -11,7 +11,7 @@ watch = () => {
         if (msg.from.id == DANIEL-LARIMER_TELEGRAM_ID) {  
         
             // Send a copy of the message to EOS-Dan-Msg-Only_CHANNEL
-            return bot.sendMessage(EOS-Dan-Msg-Only_CHANNEL_TELEGRAM_ID, msg.text) 
+            return bot.sendMessage(TARGET_TELEGRAM_ID, msg.text) 
             
         }
         
