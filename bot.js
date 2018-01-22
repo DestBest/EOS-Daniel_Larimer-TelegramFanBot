@@ -1,6 +1,6 @@
 // Loading dependencies, see: https://github.com/mullwar/telebot
 const TeleBot = require('telebot')
-const bot = new TeleBot('BOT_API_KEY')
+const bot = new TeleBot('BOT_API_TOKEN')
 
 watch = () => {
 
