@@ -1,24 +1,26 @@
-// Loading dependencies, see: https://github.com/mullwar/telebot
-const TeleBot = require('telebot')
-const bot = new TeleBot('BOT_API_TOKEN')
+// Loading dependencies (https://github.com/mullwar/telebot)
+const TeleBot = require('telebot');
+const bot = new TeleBot('BOT_API_TOKEN') 
 
-watch = () => {
 
-    // When bot receive any message
-    bot.on('text', function(msg) {  
-    
-        // If message is sent by Daniel-Larimer
-        if (msg.from.id == DANIEL_LARIMER_TELEGRAM_ID) {  
-        
-            // Send a copy of the message to EOS-Dan-Msg-Only_CHANNEL
-            return bot.sendMessage(TARGET_TELEGRAM_ID, msg.text) 
-            
-        }
-        
-    })
-    
+function forwarder() {
+
+    // Connect to this bot's Telegram API
     bot.connect()
-    
+
+    // When bot receive a text message
+    bot.on('text', (msg) => {  
+        // If sender ID is DANIEL_LARIMER_TELEGRAM_ID
+        if(msg.from && msg.from.id == DANIEL_LARIMER_TELEGRAM_ID) {
+            // Forward message to TARGET_TELEGRAM_ID
+            bot.forwardMessage(TARGET_TELEGRAM_ID, msg.chat.id, msg.message_id)
+            // Log Success
+            .then((res) => {console.log("Message successfuly forwarded")})
+            // Log Error
+            .catch((err) => {console.log(JSON.stringify(err, null, 2))})
+        }
+    }
+
 }
 
-watch()
+forwarder()
